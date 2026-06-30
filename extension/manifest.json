@@ -1,0 +1,15 @@
+{
+    "manifest_version": 3,
+    "name": "Sentinel", 
+    "version": "1.0.0",
+    "description": "AI-assisted detection browser extension.",
+    "action":{
+        "default_popup": "popup/popup.html"
+    },
+    "background": {
+        "service_worker": "scripts/background.js"
+    },
+    "permissions": [
+        "activeTab"
+    ]
+}
