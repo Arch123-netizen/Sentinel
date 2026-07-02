@@ -1,4 +1,6 @@
-# Day 1
+Day by Day development journal
+
+# Day 1(June 29,2026)
 
 ## Objectives
 
@@ -15,7 +17,7 @@
 - Cloned repository
 - Configured VS Code
 
-## Problems
+## Challenges
 
 - GitHub password authentication failed.
 - Created multiple files instead of folders on VS Code.
@@ -23,3 +25,49 @@
 ## Reflections
 
 - I learned how to set up a software project using Git and GitHub. Proved essential for organizing and journaling down each day's entire process.
+
+# Day 2(June 30,2026)
+
+## Objectives
+
+- Build the basic Chrome extension structure.
+- Learn how Chrome extensions are organized.
+- Successfully load Sentinel into Chrome.
+
+## Completed
+
+- Created the manifest.json configuration file.
+- Built the popup interface using HTML, CSS, and Javascript.
+- Organized the extension into proper structure.
+- Successfully loaded Sentinel as an unpacked extension in Chrome.
+
+## Challenges
+
+- Properly creating and structuring the files and folders.
+- Syntax errors in programming of HTML and CSS.
+
+## Reflections
+
+- I learned how different programming languages play different roles like how HTML is responsible for structure, CSS for appearance and JavaScript for behavior. Additionally I learned to run an extension in Chrome.
+
+# Day 3(July 1,2026)
+
+## Objectives
+
+- Make the browser read the URL.
+- Display it along with the status of the browser.
+
+## Completed
+
+- Added the tabs permission.
+- Updated the popup window.
+- Used the Chrome Tabs API
+
+## Challenges
+
+- Understanding new JavaScript code.
+
+## Reflections
+
+- I learned how the popup communicates with the browser to retrieve live data and how codes also need time to run. 
+

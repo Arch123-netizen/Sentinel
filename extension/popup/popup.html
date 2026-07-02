@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewpoint" content="width=device-width", initial-scale="1.0">
+        <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
         <title>Sentinel</title>
 
         <link rel="stylesheet" href="popup.css">
@@ -10,15 +10,16 @@
 
     <body>
 
-        <h1>🛡 Sentinel</h1>
+        <h2>🛡 Sentinel</h2>
 
-        <p> AI-Assisted Phising Detection</p>
+        <div class="info">
+            <p><strong>Website:</strong> <span id="website">Loading...</span></p>
 
-        <hr>
+            <p><strong>Protocol:</strong> <span id="protocol">Loading...</span></p>
 
-        <p> Status: Ready</p>
-
-        <script src="popup.js"></script>
+            <p><strong>Secure Connection:</strong><span id="https">Loading...</span></p>
+        </div>
+        <script type="module" src="popup.js"></script>
         
     </body>
 </html>

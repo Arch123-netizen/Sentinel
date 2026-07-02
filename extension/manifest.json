@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "Sentinel", 
     "version": "1.0.0",
-    "description": "AI-assisted detection browser extension.",
+    "description": "AI-assisted Phishing Detection Browser Extension.",
     "action":{
         "default_popup": "popup/popup.html"
     },
@@ -10,6 +10,7 @@
         "service_worker": "scripts/background.js"
     },
     "permissions": [
-        "activeTab"
+        "activeTab",
+        "tabs"
     ]
 }

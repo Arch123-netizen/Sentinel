@@ -1,5 +1,5 @@
 Who is Sentinel built for?
-- Sentinel is built for everyday users, especially those with less cybersecurity knowledge to avoid a possible phising attack and stay secure while using an online platform.
+- Sentinel is built for everyday users, especially those with less cybersecurity knowledge to avoid a possible phishing attack and stay secure while using an online platform.
 
 What exact problem does it solve?
 - Sentinel analyzes a website to check for suspicious charecterisitics before entering personal information so users can make safer decisions.
