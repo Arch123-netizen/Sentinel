@@ -71,3 +71,24 @@ Day by Day development journal
 
 - I learned how the popup communicates with the browser to retrieve live data and how codes also need time to run. 
 
+
+# Day 4(July 2,2026)
+
+## Objectives
+
+- Introduce an Observation Layer.
+- Separating data collection into its own module.
+
+## Completed
+
+- Implemented new function getCurrentObservation()
+- Updated popup to display the website, protocol and connection status.
+
+## Challenges
+
+- Syntax error and misspellings.
+- New links couldn't communicate wth other modules.
+
+## Reflections
+
+- I learned that files communicate using import and export modules, which allows different files to have clear communication. 
