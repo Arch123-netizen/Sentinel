@@ -92,3 +92,22 @@ Day by Day development journal
 ## Reflections
 
 - I learned that files communicate using import and export modules, which allows different files to have clear communication. 
+
+# Day 5 (July 3,2026)
+
+## Objectives
+
+- Build first analysis engine.
+
+## Completed
+
+- Designed and implemented new fucntion analyzeObservation().
+- Introduced new popup-winodow with risk score.
+
+## Challenges
+
+- New anaylsis layer and observation layer got overlapped, making it a bit difficult to adjust.
+
+## Reflections
+
+- I learned that instead of just displaying whether a webpage is safe or unsafe, keeping a risk score and telling the user why it made that decision can help the user more.

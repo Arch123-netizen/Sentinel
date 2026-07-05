@@ -5,10 +5,9 @@ export function analyzeObservation(observation) {
         verdict: "Safe"
     };
 
-    if (!observation.isHTTPS) {
-        report.score +=30;
-        report.findings.push("Website is not using HTTPS."); 
-    }
+    checkHTTPS(observation, report);
+    checkURLLength(observation, report);
+    checkIPAddress(observation, report);
     
     if (report.score === 0) {
         report.verdict = "Safe";
@@ -19,5 +18,33 @@ export function analyzeObservation(observation) {
     }
 
     return report;
+}
+
+function checkHTTPS(observation, report) {
+    if (!observation.isHTTPS) {
+        report.score +=30;
+        report.findings.push("Website is not using HTTPS."); 
+    }
+
+}
+
+function checkURLLength(observation, report) {
+
+    if (observation.fullURL.length > 75) {
+        report.score += 15;
+        report.findings.push("URL is unusually long.");
+        
+    }
+
+}
+
+function checkIPAddress(observation, report) {
+    const ipv4Pattern = /^\d{1,3}(\.\d{1,3}){3}$/;
+
+    if (ipv4Pattern.test(observation.host)) {
+        report.score += 25;
+        report.findings.push("Website uses an IP address instead of a domain name.")
+    }
+
 }
 
