@@ -8,6 +8,8 @@ export function analyzeObservation(observation) {
     checkHTTPS(observation, report);
     checkURLLength(observation, report);
     checkIPAddress(observation, report);
+    checkKeywords(observation, report);
+    checkSubdomains(observation, report);
     
     if (report.score === 0) {
         report.verdict = "Safe";
@@ -46,5 +48,33 @@ function checkIPAddress(observation, report) {
         report.findings.push("Website uses an IP address instead of a domain name.")
     }
 
+}
+
+function checkKeywords(observation, report){
+    const suspiciousKeywords =[
+        "login",
+        "verify",
+        "secure",
+        "account",
+        "update",
+        "password",
+    ];
+    for (const keyword of suspiciousKeywords) {
+        if (observation.fullURL.includes(keyword)) {
+            report.score += 10;
+            report.findings.push(`Suspicious keyword detected: ${keyword}`);
+            
+        }
+    }
+}
+
+function checkSubdomains(observation, report) {
+    const parts = observation.host.split(".");
+
+    if (parts.length > 4) {
+        report.score += 10;
+        report.findings.push("Excessive number of subdomains detected.");
+
+    }
 }
 

@@ -93,7 +93,7 @@ Day by Day development journal
 
 - I learned that files communicate using import and export modules, which allows different files to have clear communication. 
 
-# Day 5 (July 3,2026)
+# Day 5(July 3,2026)
 
 ## Objectives
 
@@ -111,3 +111,22 @@ Day by Day development journal
 ## Reflections
 
 - I learned that instead of just displaying whether a webpage is safe or unsafe, keeping a risk score and telling the user why it made that decision can help the user more.
+
+# Day 6(July 5,2026)
+
+## Objectives
+
+- Refactor the Analysis Layer into modular heurisitc functions.
+
+## Completed
+
+- Implemented URL length detection.
+- Implemented IPv4 address detection using an expression.
+
+## Challenges
+
+- Testing the IP address heuristic was diffcult because visiting websites like 1.1.1.1 redirected the browser to one.one.one.one, meaning the externsion no longer saw an IP address
+
+## Reflections
+
+- I learned that regular expressions can be used to recognize patterns such as IPv4 addresses and refactoring improves software architecture without changing the program's behavior. 

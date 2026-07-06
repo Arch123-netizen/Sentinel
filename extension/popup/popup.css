@@ -1,12 +1,12 @@
 body {
     width: 320px;
     margin: 0;
-    padding: 16px
-    font-family; Arial: sans-serif;
+    padding: 16px;
+    font-family: Arial, sans-serif;
     background-color: #f8f9fa;
 }
 
-h1 {
+h2 {
     margin-top: 0;
     color: #1f4aa8;
     text-align: center;
@@ -20,4 +20,8 @@ p {
 
 hr {
     margin: 16px 0;
+}
+
+#findings {
+    white-space: pre-line;
 }
