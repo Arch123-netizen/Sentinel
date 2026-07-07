@@ -130,3 +130,23 @@ Day by Day development journal
 ## Reflections
 
 - I learned that regular expressions can be used to recognize patterns such as IPv4 addresses and refactoring improves software architecture without changing the program's behavior. 
+
+# Day 7(July 6,2026)
+
+## Objectives
+
+- Improve Sentinel's URL Analysis Engine by adding new phisihing detection heurisitcs.
+
+## Completed
+
+- Implemented checkKeywords() to detect suspicious words commonly used in phisihing URLs.
+
+- Fixed minor HTML and CSS issues, including formatting and styling errors.
+
+## Challenges
+
+- Template literals require backtick instead of quotation marks.
+
+## Reflections
+
+- I learned that phishing detection is based on collecting multiple weak indicators rather than relying on a single rule.
