@@ -1,4 +1,8 @@
-import { RISK_WEIGHTS , SUSPICIOUS_KEYWORDS } from "./config.js";
+import { RISK_WEIGHTS , 
+        SUSPICIOUS_KEYWORDS, 
+        SHORTENING_SERVICES,
+        SUSPICIOUS_TLDS,
+        } from "./config.js";
 export function analyzeObservation(observation) {
     const report = {
         score: 0,
@@ -11,7 +15,10 @@ export function analyzeObservation(observation) {
     checkURLLength,
     checkIPAddress,
     checkKeywords,
-    checkSubdomains
+    checkSubdomains,
+    checkDomainAge,
+    checkShortenedURL,
+    checkSuspiciousTLD,
 ];
 
 for (const heuristic of heuristics) {
@@ -75,5 +82,29 @@ function checkSubdomains(observation, report) {
         report.findings.push("Excessive number of subdomains detected.");
 
     }
+}
+
+function checkShortenedURL(observation, report) {
+
+    if (SHORTENING_SERVICES.includes(observation.host)) {
+        report.score += RISK_WEIGHTS.SHORTENED_URL;
+        report.findings.push(
+            "URL shortening service detected."
+        );
+    }
+
+}
+
+function checkSuspiciousTLD(observation, report) {
+    const tld = observation.host.split(".").pop();
+
+    if (SUSPICIOUS_TLDS.includes(tld)) {
+        report.score += RISK_WEIGHTS.SUSPICIOUS_TLD;
+        report.findings.push("Suspicious top-level domain detected.");
+    }
+}
+
+function checkDomainAge(observation, report) {
+    //Placeholder for future WHOIS/API integration
 }
 

@@ -150,3 +150,22 @@ Day by Day development journal
 ## Reflections
 
 - I learned that phishing detection is based on collecting multiple weak indicators rather than relying on a single rule.
+
+# Day 8(July 7,2026)
+
+## Objectives
+
+- Improve Sentinel;s architecture by making the Analysis Engine maintainable and easy to edit.
+
+## Completed
+
+- Refactored the Analysis Engine to execute heurisitcs using array.
+- Created config.js to store risk values and configurable constants.
+
+## Challenges
+
+- Debugging the extension after introducing Javascript moduules.
+
+## Reflections
+
+- I learned that improving the architecture of a software can help the project grow without requiring major changes to existing code.
