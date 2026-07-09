@@ -2,6 +2,7 @@ import { RISK_WEIGHTS ,
         SUSPICIOUS_KEYWORDS, 
         SHORTENING_SERVICES,
         SUSPICIOUS_TLDS,
+        TRUSTED_BRANDS,
         } from "./config.js";
 export function analyzeObservation(observation) {
     const report = {
@@ -19,6 +20,7 @@ export function analyzeObservation(observation) {
     checkDomainAge,
     checkShortenedURL,
     checkSuspiciousTLD,
+    checkBrandImpersonation,
 ];
 
 for (const heuristic of heuristics) {
@@ -101,6 +103,25 @@ function checkSuspiciousTLD(observation, report) {
     if (SUSPICIOUS_TLDS.includes(tld)) {
         report.score += RISK_WEIGHTS.SUSPICIOUS_TLD;
         report.findings.push("Suspicious top-level domain detected.");
+    }
+}
+
+function checkBrandImpersonation(observation, report){
+
+    for (const [brand, officialDomain] of Object.entries(TRUSTED_BRANDS)) {
+
+        if (
+            observation.host.includes(brand) &&
+            observation.host !== officialDomain
+        ) {
+            report.score += RISK_WEIGHTS.BRAND_IMPERSONATION;
+
+            report.findings.push(
+                `Possible impersonation of ${brand}.`
+            );
+
+            break;
+        }
     }
 }
 

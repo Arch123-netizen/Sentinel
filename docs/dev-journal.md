@@ -169,3 +169,21 @@ Day by Day development journal
 ## Reflections
 
 - I learned that improving the architecture of a software can help the project grow without requiring major changes to existing code.
+
+# Day 9(July 8,2026)
+
+## Objectives
+
+- Improve Sentinel by adding another phishing detection heurisitc.
+
+## Completed
+
+- Implemented a suspicious top-level(TLD) detection heuristic using a configurable list of TLDs stored in config.js
+
+## Challenges
+
+- Learned that detecting URL shortening services is not reliable with the current browser extension architecture because shoretened URLs redirect before Sentinel can analyze them.
+
+## Reflections 
+
+- I learned that while adding heurisitcs, keeping up to date heuristics is more efficient and relevant and outdated.
