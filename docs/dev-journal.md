@@ -187,3 +187,21 @@ Day by Day development journal
 ## Reflections 
 
 - I learned that while adding heurisitcs, keeping up to date heuristics is more efficient and relevant and outdated.
+
+# Day 10(July 9,2026)
+
+## Objectives
+
+- Improve Sentinel's ability to detecting phishing websites through brand impersonation detection.
+
+## Completed
+
+- Implemented a brand impersonation heurisitc that detects domains containing trusted brand names while excluding their official domains.
+
+## Challenges
+
+- Debugged a NaN risk score caused by a mismatch between a configuration key and its usage in the analysis engine.
+
+## Reflections
+
+- I learned that a small typo can cause a major problem, even leading to an entire system failure.

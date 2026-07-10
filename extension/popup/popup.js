@@ -21,10 +21,20 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById("verdict").textContent =
         report.verdict;
 
-    document.getElementById("findings").textContent =
-        report.findings.length > 0
-        ? report.findings.join(",")
-        : "No issues detected.";
+    const findingsElement = document.getElementById("findings");
 
+    if (report.findings.length === 0) {
+    findingsElement.textContent = "No issues detected.";
+}       else {
+    findingsElement.textContent = report.findings
+        .map(finding =>
+    `Issue: ${finding.issue}
+
+    Why: ${finding.reason}
+
+    Recommendation: ${finding.recommendation}`
+        )
+        .join("\n\n");
+}
 
 });

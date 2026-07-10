@@ -3,6 +3,7 @@ import { RISK_WEIGHTS ,
         SHORTENING_SERVICES,
         SUSPICIOUS_TLDS,
         TRUSTED_BRANDS,
+        FINDINGS_DETAILS,
         } from "./config.js";
 export function analyzeObservation(observation) {
     const report = {
@@ -19,7 +20,7 @@ export function analyzeObservation(observation) {
     checkSubdomains,
     checkDomainAge,
     checkShortenedURL,
-    checkSuspiciousTLD,
+    checkSuspiciousTLDS,
     checkBrandImpersonation,
 ];
 
@@ -40,19 +41,15 @@ for (const heuristic of heuristics) {
 function checkHTTPS(observation, report) {
     if (!observation.isHTTPS) {
         report.score += RISK_WEIGHTS.HTTPS;
-        report.findings.push("Website is not using HTTPS."); 
+        report.findings.push(FINDINGS_DETAILS.HTTPS);
     }
-
 }
 
 function checkURLLength(observation, report) {
-
     if (observation.fullURL.length > 75) {
         report.score += RISK_WEIGHTS.URL_LENGTH;
-        report.findings.push("URL is unusually long.");
-        
+        report.findings.push(FINDINGS_DETAILS.URL_LENGTH);
     }
-
 }
 
 function checkIPAddress(observation, report) {
@@ -60,18 +57,19 @@ function checkIPAddress(observation, report) {
 
     if (ipv4Pattern.test(observation.host)) {
         report.score += RISK_WEIGHTS.IP_ADDRESS;
-        report.findings.push("Website uses an IP address instead of a domain name.")
+        report.findings.push(FINDINGS_DETAILS.IP_ADDRESS);
     }
-
 }
 
-function checkKeywords(observation, report){
-    
+function checkKeywords(observation, report) {
     for (const keyword of SUSPICIOUS_KEYWORDS) {
         if (observation.fullURL.includes(keyword)) {
             report.score += RISK_WEIGHTS.KEYWORD;
-            report.findings.push(`Suspicious keyword detected: ${keyword}`);
-            
+
+            report.findings.push({
+                ...FINDINGS_DETAILS.KEYWORD,
+                issue: `Suspicious keyword detected: ${keyword}`
+            });
         }
     }
 }
@@ -81,44 +79,38 @@ function checkSubdomains(observation, report) {
 
     if (parts.length > 4) {
         report.score += RISK_WEIGHTS.SUBDOMAIN;
-        report.findings.push("Excessive number of subdomains detected.");
-
+        report.findings.push(FINDINGS_DETAILS.SUBDOMAIN);
     }
 }
 
 function checkShortenedURL(observation, report) {
-
     if (SHORTENING_SERVICES.includes(observation.host)) {
         report.score += RISK_WEIGHTS.SHORTENED_URL;
-        report.findings.push(
-            "URL shortening service detected."
-        );
+        report.findings.push(FINDINGS_DETAILS.SHORTENED_URL);
     }
-
 }
 
-function checkSuspiciousTLD(observation, report) {
+function checkSuspiciousTLDS(observation, report) {
     const tld = observation.host.split(".").pop();
 
     if (SUSPICIOUS_TLDS.includes(tld)) {
-        report.score += RISK_WEIGHTS.SUSPICIOUS_TLD;
-        report.findings.push("Suspicious top-level domain detected.");
+        report.score += RISK_WEIGHTS.SUSPICIOUS_TLDS;
+        report.findings.push(FINDINGS_DETAILS.SUSPICIOUS_TLDS);
     }
 }
 
-function checkBrandImpersonation(observation, report){
-
+function checkBrandImpersonation(observation, report) {
     for (const [brand, officialDomain] of Object.entries(TRUSTED_BRANDS)) {
-
         if (
             observation.host.includes(brand) &&
             observation.host !== officialDomain
         ) {
             report.score += RISK_WEIGHTS.BRAND_IMPERSONATION;
 
-            report.findings.push(
-                `Possible impersonation of ${brand}.`
-            );
+            report.findings.push({
+                ...FINDINGS_DETAILS.BRAND_IMPERSONATION,
+                issue: `Possible impersonation of ${brand}.`
+            });
 
             break;
         }
@@ -126,6 +118,6 @@ function checkBrandImpersonation(observation, report){
 }
 
 function checkDomainAge(observation, report) {
-    //Placeholder for future WHOIS/API integration
+    // Placeholder for future WHOIS/API integration
 }
 
