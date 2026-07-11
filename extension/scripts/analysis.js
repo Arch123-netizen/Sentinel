@@ -1,7 +1,7 @@
 import { RISK_WEIGHTS , 
         SUSPICIOUS_KEYWORDS, 
         SHORTENING_SERVICES,
-        SUSPICIOUS_TLDS,
+        SUSPICIOUS_TLD,
         TRUSTED_BRANDS,
         FINDINGS_DETAILS,
         } from "./config.js";
@@ -20,7 +20,7 @@ export function analyzeObservation(observation) {
     checkSubdomains,
     checkDomainAge,
     checkShortenedURL,
-    checkSuspiciousTLDS,
+    checkSuspiciousTLD,
     checkBrandImpersonation,
 ];
 
@@ -40,15 +40,21 @@ for (const heuristic of heuristics) {
 
 function checkHTTPS(observation, report) {
     if (!observation.isHTTPS) {
-        report.score += RISK_WEIGHTS.HTTPS;
-        report.findings.push(FINDINGS_DETAILS.HTTPS);
+        addFinding(
+            report,
+            RISK_WEIGHTS.HTTPS,
+            FINDINGS_DETAILS.HTTPS
+        );
     }
 }
 
 function checkURLLength(observation, report) {
     if (observation.fullURL.length > 75) {
-        report.score += RISK_WEIGHTS.URL_LENGTH;
-        report.findings.push(FINDINGS_DETAILS.URL_LENGTH);
+        addFinding(
+            report,
+            RISK_WEIGHTS.URL_LENGTH,
+            FINDINGS_DETAILS.URL_LENGTH
+        );
     }
 }
 
@@ -56,20 +62,25 @@ function checkIPAddress(observation, report) {
     const ipv4Pattern = /^\d{1,3}(\.\d{1,3}){3}$/;
 
     if (ipv4Pattern.test(observation.host)) {
-        report.score += RISK_WEIGHTS.IP_ADDRESS;
-        report.findings.push(FINDINGS_DETAILS.IP_ADDRESS);
+       addFinding(
+            report,
+            RISK_WEIGHTS.IP_ADDRESS,
+            FINDINGS_DETAILS.IP_ADDRESS
+       );
     }
 }
 
 function checkKeywords(observation, report) {
     for (const keyword of SUSPICIOUS_KEYWORDS) {
         if (observation.fullURL.includes(keyword)) {
-            report.score += RISK_WEIGHTS.KEYWORD;
-
-            report.findings.push({
-                ...FINDINGS_DETAILS.KEYWORD,
-                issue: `Suspicious keyword detected: ${keyword}`
-            });
+           addFinding(
+           report,
+           RISK_WEIGHTS.KEYWORD,
+           {
+            ...FINDINGS_DETAILS.KEYWORD,
+            issue: `Suspicious keyword detected: ${keyword}`
+           }
+        );
         }
     }
 }
@@ -78,24 +89,33 @@ function checkSubdomains(observation, report) {
     const parts = observation.host.split(".");
 
     if (parts.length > 4) {
-        report.score += RISK_WEIGHTS.SUBDOMAIN;
-        report.findings.push(FINDINGS_DETAILS.SUBDOMAIN);
+        addFinding(
+            report,
+            RISK_WEIGHTS.SUBDOMAIN,
+            FINDINGS_DETAILS.SUBDOMAIN
+        );
     }
 }
 
 function checkShortenedURL(observation, report) {
     if (SHORTENING_SERVICES.includes(observation.host)) {
-        report.score += RISK_WEIGHTS.SHORTENED_URL;
-        report.findings.push(FINDINGS_DETAILS.SHORTENED_URL);
+        addFinding(
+            report,
+            RISK_WEIGHTS.SHORTENED_URL,
+            FINDINGS_DETAILS.SHORTENED_URL
+        );
     }
 }
 
-function checkSuspiciousTLDS(observation, report) {
+function checkSuspiciousTLD(observation, report) {
     const tld = observation.host.split(".").pop();
 
-    if (SUSPICIOUS_TLDS.includes(tld)) {
-        report.score += RISK_WEIGHTS.SUSPICIOUS_TLDS;
-        report.findings.push(FINDINGS_DETAILS.SUSPICIOUS_TLDS);
+    if (SUSPICIOUS_TLD.includes(tld)) {
+       addFinding(
+        report,
+        RISK_WEIGHTS.SUSPICIOUS_TLD,
+        FINDINGS_DETAILS.SUSPICIOUS_TLD
+       );
     }
 }
 
@@ -105,12 +125,14 @@ function checkBrandImpersonation(observation, report) {
             observation.host.includes(brand) &&
             observation.host !== officialDomain
         ) {
-            report.score += RISK_WEIGHTS.BRAND_IMPERSONATION;
-
-            report.findings.push({
-                ...FINDINGS_DETAILS.BRAND_IMPERSONATION,
-                issue: `Possible impersonation of ${brand}.`
-            });
+            addFinding(
+                report,
+                RISK_WEIGHTS.BRAND_IMPERSONATION,
+                {
+                    ...FINDINGS_DETAILS.BRAND_IMPERSONATION,
+                    issue: `Possible impersonation of ${brand}.`
+                }
+            );
 
             break;
         }
@@ -121,3 +143,7 @@ function checkDomainAge(observation, report) {
     // Placeholder for future WHOIS/API integration
 }
 
+function addFinding(report, score, finding) {
+    report.score += score;
+    report.findings.push(finding);
+}

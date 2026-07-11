@@ -205,3 +205,21 @@ Day by Day development journal
 ## Reflections
 
 - I learned that a small typo can cause a major problem, even leading to an entire system failure.
+
+# Day 11(July 10,2026)
+
+## Objectives
+
+- Improve Sentinel's findings system by replacing plain text with warnings with structured explanations.
+
+## Completed
+
+- Refactored all detection findings to use standarized objects containing an issue, reason, and recommendation.
+
+## Challenges
+
+- Multiple naming inconsistencies and debugging issues caused by mismatched idengifiers.
+
+## Reflections
+
+- I learned that maintaining consistent naming conventions and separating configuration from logic makes it easier to debug, maintain, and scale.
