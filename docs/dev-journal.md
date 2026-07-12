@@ -223,3 +223,21 @@ Day by Day development journal
 ## Reflections
 
 - I learned that maintaining consistent naming conventions and separating configuration from logic makes it easier to debug, maintain, and scale.
+
+# Day 12(July 11,2026)
+
+## Objectives
+
+- Refactor Sentinel's analysis engine to eliminate repeated code using a centralized helper function.
+
+## Completed
+
+- Implemented an addFinding() helper function and updated all detection heuristics to use it for recording risk scores and findings.
+
+## Challenges
+
+- Fixed syntax and naming inconsistencies while refactoring multiple heuristics to use the new helper function.
+
+## Reflections
+
+- Centralizing repeated logic using helper functions makes the codebase cleaner, easier to maintain and more scalable for future featues.
