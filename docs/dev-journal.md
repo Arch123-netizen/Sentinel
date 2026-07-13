@@ -241,3 +241,21 @@ Day by Day development journal
 ## Reflections
 
 - Centralizing repeated logic using helper functions makes the codebase cleaner, easier to maintain and more scalable for future featues.
+
+# Day 13(July 12,2026)
+
+## Objectives
+
+- Establish an automated testing environment for Sentinel's analysis engine.
+
+## Completed
+
+- Configured Node.js, initialized the project for ES Modules, and created the first automated test to verify HTTPS detection without using the browser.
+
+## Challenges
+
+- Resolved project structure and module path issues while setting up the testing environment.
+
+## Reflections
+
+- I learned that automated tests provide a faster and more reliable way to verify functionality, reducing dependence on manual browser testing as Sentinel grows.
