@@ -51,3 +51,37 @@ runTest(
         findings: 0
     }
 );
+
+const ipObservation = {
+    fullURL: "https://192.168.1.1",
+    host: "192.168.1.1",
+    protocol: "http:",
+    isHTTPS: false
+};
+
+runTest(
+    "IP Address Website",
+    ipObservation,
+    {
+        score: 55,
+        verdict: "Suspicious",
+        findings: 2
+    }
+);
+
+const brandObservation ={
+    fullURL: "https://paypal-login.xyz",
+    host: "paypal-login.xyz",
+    protocol: "https:",
+    isHTTPS: true
+};
+
+runTest(
+    "Brand Impersonation",
+    brandObservation,
+    {
+        score: 40,
+        verdict: "Low risk",
+        findings: 3
+    }
+);

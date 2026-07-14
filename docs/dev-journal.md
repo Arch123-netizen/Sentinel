@@ -259,3 +259,21 @@ Day by Day development journal
 ## Reflections
 
 - I learned that automated tests provide a faster and more reliable way to verify functionality, reducing dependence on manual browser testing as Sentinel grows.
+
+# Day 14(July 13,2026)
+
+## Objectives
+
+- Refactor Sentinel's automated testing system to support reusable and scalable test causes.
+
+## Completed
+
+- Implemented a reusable runTest() function and expanded the automated test suite by adding separate test cause for HTTP and HTTPS websites.
+
+## Challenges
+
+- Ensured the new test runner validated score, verdict, and finding count correctly while preserving the behavior of existing tests.
+
+## Reflections
+
+- I learned that reusable testing functions make it much easier to expand automated test coverage while keeping the test suite clean, consistent, and maintainable.
