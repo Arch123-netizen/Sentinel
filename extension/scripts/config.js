@@ -5,7 +5,7 @@ export const RISK_WEIGHTS = {
     KEYWORD: 10,
     SUBDOMAIN: 10,
     SHORTENED_URL: 15,
-    SUSPICIOUS_TLD: 10,
+    SUSPICIOUS_TLDS: 10,
     BRAND_IMPERSONATION: 20,
 };
 
@@ -26,7 +26,7 @@ export const SHORTENING_SERVICES = [
     "ow.ly",
     "buff.ly",
 ];
-export const SUSPICIOUS_TLD = [
+export const SUSPICIOUS_TLDS = [
     "zip",
     "mov",
     "click",

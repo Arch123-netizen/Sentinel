@@ -277,3 +277,21 @@ Day by Day development journal
 ## Reflections
 
 - I learned that reusable testing functions make it much easier to expand automated test coverage while keeping the test suite clean, consistent, and maintainable.
+
+# Day 15(July 14,2026)
+
+## Objectives
+
+- Expand Sentinel's automated test suite to additional phishing detection heuristics.
+
+## Completed
+
+- Added automated tests for IP address detection and a combined brand impersonation scenario, increasing regression coverage across multiple interacting heurisitics.
+
+## Challenges
+
+- Investigated a failed brand impersonation test and determined that the expected test values were incorrect rather than the implementation.
+
+## Reflections
+
+- I learned that automated tests verify both implementation and assumptions and is just as important as writing the detection logic itself.
