@@ -295,3 +295,21 @@ Day by Day development journal
 ## Reflections
 
 - I learned that automated tests verify both implementation and assumptions and is just as important as writing the detection logic itself.
+
+# Day 16(July 15,2026)
+
+## Objective
+
+- Refactor Sentinel into a modular detection architecture to prepare for AI integration.
+
+## Completed
+
+- Introduced a Detection Manager and new script engines, which is going to coordinate threat analysis.
+
+## Challenges
+
+- Encountered multiple module loading failures and syntax errors(SUSPICIOUS_TLD INSTEAD OF SUSPICIOUS_TLDS)
+
+## Reflections
+
+- I learned that architectural refactoring requires module organization and naming conventions, even a single letter can affect the perfomance of the entire system.

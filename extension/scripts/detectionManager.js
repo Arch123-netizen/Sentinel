@@ -1,6 +1,13 @@
 import { analyzeObservation } from "./engines/ruleEngine.js";
+import { analyzeWithAI } from "./engines/aiEngine.js";
 
 export function detectThreat(observation) {
     const ruleReport = analyzeObservation(observation);
-    return ruleReport;
+    const aiReport = analyzeWithAI(observation);
+
+    // Temporary: expose both reports
+    return {
+        ...ruleReport,
+        ai: aiReport
+    };
 }
