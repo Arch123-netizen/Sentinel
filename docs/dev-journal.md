@@ -313,3 +313,21 @@ Day by Day development journal
 ## Reflections
 
 - I learned that architectural refactoring requires module organization and naming conventions, even a single letter can affect the perfomance of the entire system.
+
+# Day 17(July 16,2026)
+
+## Objective
+
+- Introduce the AI Engine architecture into Sentinel and establish the foundation for a machine learning phishing detection pipeline.
+
+## Completed
+
+- Added a aiEngine.js file and implemented a feature extractor to convert website observations into numerical features.
+
+## Challenges
+
+- Encountered a module lading failure caused by a typo in the exported function.
+
+## Reflections
+
+- I learned that separating feature extractions and system orchestration creates a scalable architecture.
