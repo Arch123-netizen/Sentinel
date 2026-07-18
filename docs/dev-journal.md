@@ -331,3 +331,21 @@ Day by Day development journal
 ## Reflections
 
 - I learned that separating feature extractions and system orchestration creates a scalable architecture.
+
+# Day 18(July 17,2026)
+
+## Objective
+
+- Establish the machine learning data pipeline by collecting real-world phishing aand benign datasets are preparing Sentinel for model training.
+
+## Completed
+
+- Created a structured machine learning workspace with different directories. Downloaded and integrated the PhishTank dataset and Tranco dataset for legitimate websites.
+
+## Challenges
+
+- Resolved dataset loading issues caused by filename mismatches and verified the preprocessing pipeline.
+
+## Reflections
+
+- I learned that machine learning midel depends heavily on the quality of its data pipeline and building reliable datasets is just as important as training the algorithm itself.
