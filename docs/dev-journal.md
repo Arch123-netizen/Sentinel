@@ -349,3 +349,29 @@ Day by Day development journal
 ## Reflections
 
 - I learned that machine learning midel depends heavily on the quality of its data pipeline and building reliable datasets is just as important as training the algorithm itself.
+
+# Day 19(July 18, 2026)
+
+## Objectives
+
+- Transition Sentinel from a rule-based phishing detector into a machine learning-powered cybersecurity platform.
+- Build the complete machine learning training pipeline and train the first AI models.
+
+## Completed
+
+- Processed and balanced phishing and benign URL datasets, producing a combined training dataset of 129,608 labeled samples.
+- Designed and implemented Sentinel's first Python-based machine learning pipeline, including feature extraction, dataset preparation, and model training.
+- Engineered the initial set of URL-based features for phishing classification.
+- Trained the first Logistic Regression model, achieving a strong baseline with approximately 96.6% accuracy and an F1 score of approximately 96.6%.
+- Trained a Random Forest classifier, which achieved significantly higher performance on the current evaluation dataset.
+- Saved trained models for future integration into the Sentinel browser extension.
+- Performed the first feature importance analysis, discovering that structural URL characteristics (such as path length, URL length, host length, and subdomain count) contributed far more to model predictions than keyword-based heuristics.
+
+## Challenges
+
+- Verified that unexpectedly high Random Forest performance should be treated cautiously rather than assumed to represent real-world performance.
+- Recognized the need for stronger evaluation methods, including cross-validation and independent test datasets, to ensure the model generalizes beyond the current training data.
+
+## Reflections
+
+- I learned that building a machine learning system extends far beyond training a model; data engineering, feature engineering, evaluation methodology, and scientific validation are equally important components of a trustworthy cybersecurity solution.
