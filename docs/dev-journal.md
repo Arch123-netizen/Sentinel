@@ -375,3 +375,23 @@ Day by Day development journal
 ## Reflections
 
 - I learned that building a machine learning system extends far beyond training a model; data engineering, feature engineering, evaluation methodology, and scientific validation are equally important components of a trustworthy cybersecurity solution.
+
+# Day 20 (July 19, 2026)
+
+## Objectives
+
+- Improve Sentinel's machine learning feature engineering architecture.
+- Increase the number of engineered URL features to better capture phishing characteristics.
+## Completed
+
+- Refactored the feature extraction system into a modular architecture, separating URL, character, domain, and path analysis into dedicated functions.
+- Expanded Sentinel's engineered feature set from 12 to 26 cybersecurity-inspired features.
+
+## Challenges
+
+- Observed that the regenerated dataset contained one fewer sample than the previous version. Investigation showed the preprocessing pipeline remained internally consistent, highlighting the importance of verifying data integrity throughout machine learning workflows.
+
+## Reflections
+
+* I learned that reinforced that reliable machine learning is built through disciplined engineering rather than simply training more models. Modular feature engineering, reproducible experiments, and rigorous validation are just as important as achieving high accuracy.
+

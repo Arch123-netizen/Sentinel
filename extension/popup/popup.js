@@ -1,10 +1,10 @@
-import { detectThreat } from "../scripts/detectionManager.js";
+import { makeDecision } from "../scripts/engines/decisionEngine.js";
 import { getCurrentObservation } from "../scripts/observation.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
     try {
         const observation = await getCurrentObservation();
-        const report = detectThreat(observation);
+        const report = makeDecision(observation);
 
         document.getElementById("website").textContent =
             observation.host;
