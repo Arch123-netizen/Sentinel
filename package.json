@@ -17,9 +17,11 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-
   "bugs": {
     "url": "https://github.com/Arch123-netizen/Sentinel/issues"
   },
-  "homepage": "https://github.com/Arch123-netizen/Sentinel#readme"
+  "homepage": "https://github.com/Arch123-netizen/Sentinel#readme",
+  "dependencies": {
+    "onnxruntime-web": "^1.27.0"
+  }
 }

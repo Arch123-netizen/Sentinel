@@ -350,7 +350,7 @@ Day by Day development journal
 
 - I learned that machine learning midel depends heavily on the quality of its data pipeline and building reliable datasets is just as important as training the algorithm itself.
 
-# Day 19(July 18, 2026)
+# Day 19(July 18,2026)
 
 ## Objectives
 
@@ -376,7 +376,7 @@ Day by Day development journal
 
 - I learned that building a machine learning system extends far beyond training a model; data engineering, feature engineering, evaluation methodology, and scientific validation are equally important components of a trustworthy cybersecurity solution.
 
-# Day 20 (July 19, 2026)
+# Day 20(July 19,2026)
 
 ## Objectives
 
@@ -395,3 +395,39 @@ Day by Day development journal
 
 * I learned that reinforced that reliable machine learning is built through disciplined engineering rather than simply training more models. Modular feature engineering, reproducible experiments, and rigorous validation are just as important as achieving high accuracy.
 
+
+# Day 21(July 20,2026)
+
+## Objectives
+
+- Begin integrating Sentinel's machine learning pipeline into the browser extension.
+
+## Completed
+
+- Implemented a JavaScript feature extraction pipeline, introduced a Decision Engine to coordinate rule-based and AI analysis, validated feature extraction through testing, and restored the extension after resolving architectural issues caused by an attempted project restructuring.
+
+## Challenges
+
+- Encountered broken module imports after introducing a parallel project structure, requiring the architecture to be simplified back into a single consistent codebase.
+
+## Reflections
+
+- I learned that maintaining a single, consistent architecture is more important than introducing a better structure prematurely, and that validating feature extraction in both Python and JavaScript is essential before integrating machine learning into the browser extension.
+
+# Day 22(July 21,2026)
+
+## Objectives
+
+- Convert Sentinel's trained machine learning model into a portable format suitable for deployment.
+
+## Completed
+
+- Successfully exported the trained Random Forest model from scikit-learn to ONNX, verified that the exported model produced the same predictions as the original Python model, integrated ONNX Runtime into the project, and prepared the browser extension for future local AI inference by adding the ONNX model and validating the required runtime assets.
+
+## Challenges
+
+- Encountered a feature mismatch between the saved model and the updated feature extractor, requiring the model to be retrained before exporting to ONNX.
+
+## Reflections
+
+- I learned that a trained model is only useful if it can be reliably deployed and verified in its target environment, and that validating model consistency after conversion is an essential part of a production machine learning pipeline.
