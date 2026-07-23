@@ -449,3 +449,22 @@ Day by Day development journal
 ## Reflections
 
 - I learned that successfully converting and validating a machine learning model does not guarantee that it can be deployed directly in the target environment, and that deployment compatibility must be considered separately from model accuracy. 
+
+
+# Day 24(July 23,2026)
+
+## Objectives
+
+- Strengthen Sentinel's rule-based phishing detection system by expanding heuristic coverage and validating its detection logic through automated tests.
+
+## Completed
+
+- Successfully expanded and validated Sentinel's rule-based detection system by adding automated tests for HTTP websites, HTTPS websites, IP addresses, brand impersonation, suspicious TLDs, suspicious keywords, compound suspicious URLs, and unusually long URLs, while resolving configuration inconsistencies and verifying that the browser extension works correctly.
+
+## Challenges
+
+- Encountered inconsistent configuration names for suspicious TLDs across Sentinel's analysis engine and browser extension, causing module import errors and a `NaN` risk score before the references were standardized.
+
+## Reflections
+
+* I learned that shared configuration interfaces must remain consistent across every component that depends on them, and that both automated tests and the actual deployed extension must be verified to ensure the entire system works correctly.

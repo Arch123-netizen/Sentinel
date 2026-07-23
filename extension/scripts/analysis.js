@@ -1,7 +1,7 @@
 import { RISK_WEIGHTS , 
         SUSPICIOUS_KEYWORDS, 
         SHORTENING_SERVICES,
-        SUSPICIOUS_TLD,
+        SUSPICIOUS_TLDS,
         TRUSTED_BRANDS,
         FINDINGS_DETAILS,
         } from "./config.js";
@@ -110,10 +110,10 @@ function checkShortenedURL(observation, report) {
 function checkSuspiciousTLD(observation, report) {
     const tld = observation.host.split(".").pop();
 
-    if (SUSPICIOUS_TLD.includes(tld)) {
+    if (SUSPICIOUS_TLDS.includes(tld)) {
        addFinding(
         report,
-        RISK_WEIGHTS.SUSPICIOUS_TLD,
+        RISK_WEIGHTS.SUSPICIOUS_TLDS,
         FINDINGS_DETAILS.SUSPICIOUS_TLD
        );
     }

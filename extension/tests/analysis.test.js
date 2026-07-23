@@ -85,3 +85,71 @@ runTest(
         findings: 3
     }
 );
+
+const suspiciousTLDObservation = {
+    fullURL: "https://example.xyz",
+    host: "example.xyz",
+    protocol: "https:",
+    isHTTPS: true
+};
+
+runTest(
+    "Suspicious TLD",
+    suspiciousTLDObservation,
+    {
+        score: 10,
+        verdict: "Low risk",
+        findings: 1
+    }
+);
+
+const keywordObservation = {
+    fullURL: "https://example.com/login",
+    host: "example.com",
+    protocol: "https:",
+    isHTTPS: true
+};
+
+runTest(
+    "Suspicious Keyword",
+    keywordObservation,
+    {
+        score: 10,
+        verdict: "Low risk",
+        findings: 1
+    }
+);
+
+const compoundObservation = {
+    fullURL: "http://paypal-login.xyz",
+    host: "paypal-login.xyz",
+    protocol: "http:",
+    isHTTPS: false
+};
+
+runTest(
+    "Compound Suspicious URL",
+    compoundObservation,
+    {
+        score: 70,
+        verdict: "Suspicious",
+        findings: 4
+    }
+);
+
+const longURLObservation = {
+    fullURL: "https://example.com/this-is-a-very-long-path-that-is-definitely-more-than-seventy-five-characters",
+    host: "example.com",
+    protocol: "https:",
+    isHTTPS: true
+};
+
+runTest(
+    "Long URL",
+    longURLObservation,
+    {
+        score: 15,
+        verdict: "Low risk",
+        findings: 1
+    }
+);
