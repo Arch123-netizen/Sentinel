@@ -431,3 +431,21 @@ Day by Day development journal
 ## Reflections
 
 - I learned that a trained model is only useful if it can be reliably deployed and verified in its target environment, and that validating model consistency after conversion is an essential part of a production machine learning pipeline.
+
+# Day 23(July 22,2026)
+
+## Objectives
+
+- Integrate Sentinel's trained Random Forest model into the browser extension and enable local machine learning inference.
+
+## Completed
+
+- Successfully validated that the ONNX model produced matching predictions to the original scikit-learn model, attempted to integrate ONNX Runtime Web into Sentinel, investigated Chrome Manifest V3 Content Security Policy and WebAssembly compatibility issues, and ultimately restored Sentinel to the last stable committed version after determining that the browser-side ONNX integration was not yet reliable.
+
+## Challenges
+
+- Encountered repeated WebAssembly and ONNX Runtime Web errors caused by Content Security Policy restrictions, failed dynamic WASM module loading, and unavailable inference backends within the Chrome extension environment. The integration was rolled back to prevent destabilizing the working Sentinel extension.
+
+## Reflections
+
+- I learned that successfully converting and validating a machine learning model does not guarantee that it can be deployed directly in the target environment, and that deployment compatibility must be considered separately from model accuracy. 
