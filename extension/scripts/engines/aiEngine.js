@@ -16,7 +16,7 @@ export function analyzeWithAI(observation) {
         findings: [],
         verdict: score >= 40 ? "Suspicious" : "Safe",
         confidence: 0.60,
-        source: "AI Engine",
+        source: "Temporary AI Heuristic",
         features
     };
 }
