@@ -56,7 +56,10 @@ function shannonEntropy(text) {
 export function extractFeatures(observation) {
     const url = observation.fullURL.toLowerCase();
     const host = observation.host.toLowerCase();
-    const pathname = observation.pathname || "";
+    const pathname =
+    observation.pathname === "/"
+        ? ""
+        : (observation.pathname || "");
 
     const urlObject = new URL(url);
 

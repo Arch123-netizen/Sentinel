@@ -486,3 +486,21 @@ Day by Day development journal
 ## Reflections
 
 - I learned that a machine learning model depends on a strict feature contract between training and inference, and that verifying feature definitions and ordering before deployment is essential for ensuring that the model receives the same type of data it was trained on.
+
+# Day 26(July 25,2026)
+
+## Objectives
+
+- Verify that Sentinel's JavaScript feature extraction pipeline produces the same 25-feature vectors as the Python training pipeline.
+
+## Completed
+
+- Built an automated Python-to-JavaScript feature parity system, corrected a path-length normalization mismatch between Python and JavaScript URL parsing, generated a canonical fixture containing 10 representative URLs, and verified that all 10 URLs produced matching feature vectors while the feature schema, analysis tests, and decision engine tests continued to pass.
+
+## Challenges
+
+- Discovered that Python's `urlparse()` represented the path of a domain-only URL as an empty string while JavaScript's `URL` API represented it as `/`, requiring path normalization in the JavaScript feature extractor to ensure identical feature vectors between training and browser inference.
+
+## Reflections
+
+- I learned that successful machine learning deployment requires more than a trained model: the entire data pipeline must remain consistent between training and inference, and automated parity testing provides a reliable way to detect subtle differences before they affect model predictions.
