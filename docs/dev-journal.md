@@ -504,3 +504,21 @@ Day by Day development journal
 ## Reflections
 
 - I learned that successful machine learning deployment requires more than a trained model: the entire data pipeline must remain consistent between training and inference, and automated parity testing provides a reliable way to detect subtle differences before they affect model predictions.
+
+# Day 27(July 26,2026)
+
+## Objectives
+
+- Improve Sentinel's machine learning dataset and validate the Random Forest V2 model and its ONNX deployment pipeline.
+
+## Completed
+
+- Built a balanced V2 dataset using improved benign and phishing URL sources, containing 64,786 benign URLs and 64,786 phishing URLs. Retrained the Random Forest V2 model, achieving an F1 score of 0.9807, then validated the model against known benign domains. Exported the trained model to ONNX, successfully loaded it with ONNX Runtime, and verified that Python and ONNX predictions and probabilities matched across a representative test suite.
+
+## Challenges
+
+- Discovered that the initial dataset caused the model to incorrectly classify clearly benign URLs as phishing, revealing a significant dataset-quality and distribution problem despite the extremely high 99.98% evaluation score. Rebuilt the dataset using a more reliable benign source and retrained the model. During ONNX integration, also encountered prediction mismatches caused by differences in how ONNX Runtime returned probability outputs, requiring the probability extraction and prediction logic to be corrected.
+
+## Reflections
+ 
+- I learned that a high model accuracy score is not enough to demonstrate that a cybersecurity model is reliable. Dataset quality, representative evaluation samples, and real-world validation are essential. I also learned that deploying a machine learning model requires verifying that the exported model behaves consistently with the original model, making Python-to-ONNX parity testing an important part of Sentinel's production pipeline.
