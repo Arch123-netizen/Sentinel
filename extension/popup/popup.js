@@ -4,7 +4,14 @@ import { getCurrentObservation } from "../scripts/observation.js";
 document.addEventListener("DOMContentLoaded", async () => {
     try {
         const observation = await getCurrentObservation();
-        const report = makeDecision(observation);
+        const modelUrl = chrome.runtime.getURL(
+    "models/random_forest_v2.onnx"
+);
+
+const report = await makeDecision(
+    observation,
+    modelUrl
+);
 
         document.getElementById("website").textContent =
             observation.host;

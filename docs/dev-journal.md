@@ -522,3 +522,22 @@ Day by Day development journal
 ## Reflections
  
 - I learned that a high model accuracy score is not enough to demonstrate that a cybersecurity model is reliable. Dataset quality, representative evaluation samples, and real-world validation are essential. I also learned that deploying a machine learning model requires verifying that the exported model behaves consistently with the original model, making Python-to-ONNX parity testing an important part of Sentinel's production pipeline.
+
+# Day 28(July 27,2026)
+
+## Objectives
+
+- Integrate the Random Forest V2 model into Sentinel's AI inference pipeline, validate the ONNX deployment, and complete end-to-end testing of the rule-based and AI detection systems.
+
+## Completed
+
+- Exported the Random Forest V2 model to ONNX and verified that the exported model contains the expected 25 input features and produces the expected label and probability outputs. Successfully configured `onnxruntime-node` and loaded the model within Sentinel's Node.js testing environment. Connected the ONNX model to the AI engine and integrated it with the decision engine, allowing Sentinel to perform both rule-based and AI-based analysis on URLs. Tested the complete pipeline across multiple safe and suspicious URLs and confirmed that the rule-based engine continues to produce consistent risk scores, findings, and recommendations. Identified and resolved several integration issues involving ONNX runtime compatibility, model output handling, and module exports.
+
+## Challenges
+
+- Discovered that although the ONNX model successfully loads and executes inference, its predictions do not consistently match the original Python Random Forest model. Several clearly benign URLs, including `example.com`, `google.com`, `github.com`, `microsoft.com`, and `apple.com`, were incorrectly classified as phishing by the AI engine. This revealed a likely mismatch between the features used during model training and the feature vectors supplied during JavaScript inference, potentially involving feature ordering, feature calculation, or data representation. The issue has been isolated to the AI inference pipeline, while the rule-based detection system remains functional and reliable.
+
+## Reflections
+
+- I learned that successfully deploying a machine learning model is not enough to guarantee that the deployed system is behaving correctly. The training and inference pipelines must use identical feature definitions, ordering, and data representations. I also learned that model validation must include real-world representative examples rather than relying solely on evaluation metrics. The next step is to systematically compare the Python training features with the JavaScript inference features and establish complete Python-to-ONNX-to-JavaScript prediction parity before relying on the AI engine for Sentinel's final decisions.
+
