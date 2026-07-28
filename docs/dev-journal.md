@@ -541,3 +541,20 @@ Day by Day development journal
 
 - I learned that successfully deploying a machine learning model is not enough to guarantee that the deployed system is behaving correctly. The training and inference pipelines must use identical feature definitions, ordering, and data representations. I also learned that model validation must include real-world representative examples rather than relying solely on evaluation metrics. The next step is to systematically compare the Python training features with the JavaScript inference features and establish complete Python-to-ONNX-to-JavaScript prediction parity before relying on the AI engine for Sentinel's final decisions.
 
+# Day 29(July 28,2026)
+
+## Objectives
+
+- Stabilize Sentinel's browser extension after the failed ONNX Runtime Web integration, validate the rule-based detection pipeline, and verify that the extension remains functional without the AI inference system.
+
+## Completed
+
+- Identified and resolved the ONNX Runtime Web and WebAssembly deployment issues that prevented the Sentinel popup from loading correctly, restoring the extension to a stable working state. Removed the unstable browser-side AI inference path from the active extension architecture while preserving the trained Random Forest V2 model and its training pipeline for future integration. Validated all 25 machine-learning features against the training schema and successfully passed feature parity testing across 10 representative URLs. Re-ran the analysis and decision engine tests, confirming that HTTP and HTTPS detection, IP addresses, brand impersonation, suspicious TLDs, suspicious keywords, compound suspicious URLs, and long URLs are functioning correctly. Tested the Sentinel popup directly in the browser across multiple safe and suspicious URLs and confirmed that it correctly displays the website, protocol, secure connection status, risk score, verdict, findings, explanations, and recommendations. Added the custom extension icon structure and configured the manifest to load the Sentinel icon.
+
+## Challenges
+
+- The browser deployment of the Random Forest V2 model using ONNX Runtime Web encountered significant WebAssembly and Content Security Policy compatibility issues, resulting in failed WASM loading and the absence of an available inference backend. Continuing to debug the deployment would have consumed too much time without guaranteeing a reliable result, so the browser AI integration was removed from the active architecture. Additional testing revealed that the rule engine currently does not display executable file extensions as a user-facing finding, despite executable extensions being included in the machine-learning feature extraction pipeline.
+
+## Reflections
+
+- I learned that a machine-learning system can be successfully trained and exported while still being difficult to deploy reliably in a real browser environment. I also learned the importance of maintaining a stable fallback architecture when an experimental component fails, allowing Sentinel's core rule-based detection system to remain functional while preserving the AI model for future development. Today's testing reinforced the value of automated feature parity and integration tests, as they allowed the system to be validated systematically rather than relying only on manual browser testing. Sentinel now has a stable foundation for the final Day 30 sprint, which should focus on final hardening, UI improvements, comprehensive testing, documentation, and release preparation rather than introducing another major architectural change.

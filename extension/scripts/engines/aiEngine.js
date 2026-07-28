@@ -1,4 +1,4 @@
-import * as ort from "onnxruntime-node";
+import * as ort from "onnxruntime-web";
 import { extractFeatures } from "../featureExtractor.js";
 
 let session = null;
@@ -58,26 +58,30 @@ export async function analyzeWithAI(observation, modelUrl) {
         float_input: inputTensor
     });
 
-    const score = Number(
+    /*
+     * The ONNX export does not preserve sklearn's
+     * predict_proba() output directly.
+     *
+     * For this exported model:
+     *
+     * probabilities[0] = -phishingProbability
+     * probabilities[1] =  phishingProbability
+     *
+     * Therefore, the absolute value of probabilities[1]
+     * gives the phishing probability.
+     */
+
+    const rawProbability = Number(
         results.probabilities.data[1]
     );
 
-    /*
-     * The ONNX output is currently a decision score,
-     * not a true probability.
-     *
-     * Positive score -> phishing
-     * Negative score -> benign
-     */
+    const phishingProbability = Math.abs(
+        rawProbability
+    );
 
-    const prediction = score >= 0 ? 1 : 0;
-
-    /*
-     * Convert the decision score to a probability-like
-     * confidence value using the logistic function.
-     */
-    const phishingProbability =
-        1 / (1 + Math.exp(-score));
+    const prediction = phishingProbability >= 0.5
+        ? 1
+        : 0;
 
     const confidence = prediction === 1
         ? phishingProbability

@@ -4,14 +4,8 @@ import { getCurrentObservation } from "../scripts/observation.js";
 document.addEventListener("DOMContentLoaded", async () => {
     try {
         const observation = await getCurrentObservation();
-        const modelUrl = chrome.runtime.getURL(
-    "models/random_forest_v2.onnx"
-);
 
-const report = await makeDecision(
-    observation,
-    modelUrl
-);
+        const report = makeDecision(observation);
 
         document.getElementById("website").textContent =
             observation.host;
@@ -28,23 +22,33 @@ const report = await makeDecision(
         document.getElementById("verdict").textContent =
             report.verdict;
 
-        const findingsElement = document.getElementById("findings");
+        const findingsElement =
+            document.getElementById("findings");
 
         if (report.findings.length === 0) {
-            findingsElement.textContent = "No issues detected.";
+            findingsElement.textContent =
+                "No issues detected.";
         } else {
-            findingsElement.textContent = report.findings
-                .map(finding =>
+            findingsElement.textContent =
+                report.findings
+                    .map(
+                        finding =>
 `Issue: ${finding.issue}
 
 Why: ${finding.reason}
 
 Recommendation: ${finding.recommendation}`
-                )
-                .join("\n\n");
+                    )
+                    .join("\n\n");
         }
 
     } catch (error) {
         console.error("Sentinel Error:", error);
+
+        document.getElementById("verdict").textContent =
+            "Error";
+
+        document.getElementById("findings").textContent =
+            "Sentinel could not analyze this page.";
     }
 });
