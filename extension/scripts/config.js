@@ -7,6 +7,7 @@ export const RISK_WEIGHTS = {
     SHORTENED_URL: 15,
     SUSPICIOUS_TLDS: 10,
     BRAND_IMPERSONATION: 20,
+    EXECUTABLE_EXTENSION: 20,
 };
 
 export const SUSPICIOUS_KEYWORDS = [
@@ -26,6 +27,7 @@ export const SHORTENING_SERVICES = [
     "ow.ly",
     "buff.ly",
 ];
+
 export const SUSPICIOUS_TLDS = [
     "zip",
     "mov",
@@ -43,7 +45,7 @@ export const TRUSTED_BRANDS = {
     facebook: "facebook.com",
     netflix: "netflix.com",
     github: "github.com",
-}
+};
 
 export const FINDINGS_DETAILS = {
     HTTPS: {
@@ -92,5 +94,11 @@ export const FINDINGS_DETAILS = {
         issue: "Possible brand impersonation detected.",
         reason: "The website appears to reference a trusted brand while using a different domain.",
         recommendation: "Visit the brand's official website directly instead of using this link."
+    },
+
+    EXECUTABLE_EXTENSION: {
+        issue: "Potentially dangerous file extension detected.",
+        reason: "Executable or archive files can be used to deliver malware or other harmful content.",
+        recommendation: "Do not download or open the file unless you can verify that the source is trustworthy."
     }
 };

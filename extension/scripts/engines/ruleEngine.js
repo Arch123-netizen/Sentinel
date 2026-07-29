@@ -22,6 +22,8 @@ export function analyzeObservation(observation) {
     checkShortenedURL,
     checkSuspiciousTLD,
     checkBrandImpersonation,
+    checkExecutableExtension,
+
 ];
 
 for (const heuristic of heuristics) {
@@ -136,6 +138,31 @@ function checkBrandImpersonation(observation, report) {
 
             break;
         }
+    }
+}
+
+function checkExecutableExtension(observation, report) {
+    const executableExtensions = [
+        ".exe",
+        ".zip",
+        ".rar",
+        ".scr",
+        ".bat",
+        ".cmd",
+    ];
+
+    const pathname = observation.pathname.toLowerCase();
+
+    const hasExecutableExtension = executableExtensions.some(
+        extension => pathname.endsWith(extension)
+    );
+
+    if (hasExecutableExtension) {
+        addFinding(
+            report,
+            RISK_WEIGHTS.EXECUTABLE_EXTENSION,
+            FINDINGS_DETAILS.EXECUTABLE_EXTENSION
+        );
     }
 }
 

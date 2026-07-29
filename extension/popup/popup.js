@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             observation.host;
 
         document.getElementById("protocol").textContent =
-            observation.protocol.toUpperCase();
+            observation.protocol.replace(":", "").toUpperCase();
 
         document.getElementById("https").textContent =
             observation.isHTTPS ? "Yes ✅" : "No ❌";
