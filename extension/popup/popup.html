@@ -2,13 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0"
     >
+
     <title>Sentinel</title>
 
-    <link rel="stylesheet" href="popup.css">
+    <link
+        rel="stylesheet"
+        href="popup.css"
+    >
 </head>
 
 <body>
@@ -32,10 +37,9 @@
             <span id="https">Loading...</span>
         </p>
 
-        <p>
-            <strong>Risk Score:</strong>
-            <span id="score">Loading...</span>
-        </p>
+        <hr>
+
+        <h3>Overall Sentinel Assessment</h3>
 
         <p>
             <strong>Verdict:</strong>
@@ -43,12 +47,36 @@
         </p>
 
         <p>
-            <strong>Findings:</strong>
+            <strong>Risk Score:</strong>
+            <span id="score">Loading...</span>
         </p>
 
-        <div id="findings">
+        <hr>
+
+        <h3>Rule-Based Analysis</h3>
+
+        <div id="ruleFindings">
             Loading...
         </div>
+
+        <hr>
+
+        <h3>AI Analysis</h3>
+
+        <p>
+            <strong>AI Verdict:</strong>
+            <span id="aiVerdict">Loading...</span>
+        </p>
+
+        <p>
+            <strong>Phishing Probability:</strong>
+            <span id="aiProbability">Loading...</span>
+        </p>
+
+        <p>
+            <strong>AI Confidence:</strong>
+            <span id="aiConfidence">Loading...</span>
+        </p>
 
     </div>
 

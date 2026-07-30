@@ -558,3 +558,43 @@ Day by Day development journal
 ## Reflections
 
 - I learned that a machine-learning system can be successfully trained and exported while still being difficult to deploy reliably in a real browser environment. I also learned the importance of maintaining a stable fallback architecture when an experimental component fails, allowing Sentinel's core rule-based detection system to remain functional while preserving the AI model for future development. Today's testing reinforced the value of automated feature parity and integration tests, as they allowed the system to be validated systematically rather than relying only on manual browser testing. Sentinel now has a stable foundation for the final Day 30 sprint, which should focus on final hardening, UI improvements, comprehensive testing, documentation, and release preparation rather than introducing another major architectural change.
+
+
+# Day 30(July 29,2026)
+
+## Objectives
+
+- Complete the final hardening and validation of Sentinel's browser extension, verify that all core detection systems function correctly, and prepare the project for the end of the initial 30-day development sprint.
+
+## Completed
+
+- Fixed the Sentinel popup's protocol display so that protocols are presented correctly without the trailing colon. Added executable and archive file-extension detection to the rule-based analysis engine, including a dedicated risk weight and detailed finding explanation with a security recommendation. Successfully validated the new detection capability through both automated decision-engine testing and direct browser testing. Completed the final automated validation of Sentinel's feature extraction and detection systems, with all 25 machine-learning features maintaining parity with the training schema and all 10 feature-parity URLs passing successfully. Confirmed that the rule-based analysis tests passed across HTTP and HTTPS websites, IP addresses, brand impersonation, suspicious TLDs, suspicious keywords, compound suspicious URLs, and long URLs. Completed the final decision-engine test across safe and suspicious URLs and verified that executable file extensions are correctly detected and reported. Confirmed that the Sentinel browser popup correctly displays website information, protocol, secure connection status, risk score, verdict, findings, explanations, and recommendations. Committed and pushed the final Day 30 changes to GitHub and verified that the repository's working tree is clean.
+
+## Challenges
+
+- The final stage focused primarily on stability rather than introducing major new functionality. The Random Forest V2 AI inference system remains outside the active browser decision pipeline because the ONNX Runtime Web deployment encountered browser WebAssembly and Content Security Policy compatibility issues. Rather than risk destabilizing the completed extension, the AI inference system was preserved as experimental work while the reliable rule-based engine remained the active detection mechanism. The final sprint therefore required balancing the original AI-based vision of Sentinel with the practical need to deliver a stable and functional browser extension.
+
+## Reflections
+
+- Completing the 30-day Sentinel sprint demonstrated that building a cybersecurity product requires more than implementing individual features. The project required designing an architecture, developing a feature-extraction pipeline, validating parity between training and inference systems, building explainable detection rules, testing edge cases, integrating the system into a browser extension, debugging deployment issues, and maintaining a stable fallback when experimental technology failed. The most important lesson from the final day was that a reliable security product is more valuable than an unfinished system that depends on unstable components. Sentinel now has a functional and tested foundation that can be extended in future development phases. The next phase should focus on improving detection accuracy, expanding real-world testing, strengthening the architecture, and revisiting AI integration only when it can be deployed reliably and validated end-to-end.
+
+# Day 31(July 30,2026)
+
+## Objectives
+
+- Integrate Sentinel's Random Forest V2 AI engine into the active detection pipeline.
+
+## Completed
+
+- Integrated the Random Forest V2 ONNX model with Sentinel through a local Node.js AI server.
+- Connected the AI engine and rule-based engine through the Decision Engine.
+
+
+## Challenges
+
+- Integrated multiple components including ONNX inference, the AI server, feature extraction, the Decision Engine, and the browser extension.
+
+## Reflections
+
+- I learned that integrating AI into a cybersecurity product requires reliable coordination between the model, feature pipeline, inference system, decision logic, and user interface.
+
